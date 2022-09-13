@@ -1,0 +1,12 @@
+DOCKER_ARGS="
+    -it \
+    --rm \
+    --name cpp_project_name.inst \
+    --user $(id -u):$(id -g) \
+    --group-add $(getent group audio | cut -d: -f3) \
+    --device /dev/snd \
+    -v $(pwd)/src/cpp:/cpp_project_name \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e DISPLAY=$DISPLAY \
+    cpp_project_name
+    "
